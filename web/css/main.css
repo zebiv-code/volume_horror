@@ -1,0 +1,209 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+}
+
+header h1 { font-size: 2rem; color: #ff4444; letter-spacing: 0.05em; }
+.subtitle { color: #888; margin: 0.3rem 0 1rem; font-size: 0.9rem; }
+
+.vol-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#audio-btn {
+    padding: 6px 16px;
+    background: #1a1a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #aaa;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+#audio-btn.active { background: #2a1a1a; border-color: #f44; color: #f44; }
+
+.vol-meter {
+    width: 120px;
+    height: 12px;
+    background: #222;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.vol-bar {
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #4f4, #ff0, #f44);
+    border-radius: 6px;
+    transition: width 0.15s;
+}
+
+#vol-display {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 48px;
+}
+
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.control-card {
+    background: #14141f;
+    border: 1px solid #2a2a3e;
+    border-radius: 12px;
+    padding: 16px;
+    transition: border-color 0.2s;
+}
+.control-card:hover { border-color: #f44; }
+.control-card.active-card { border-color: #f44; box-shadow: 0 0 12px rgba(255,68,68,0.2); }
+.control-card h3 { color: #ff6666; font-size: 1rem; margin-bottom: 4px; }
+.card-desc { color: #888; font-size: 0.8rem; margin-bottom: 12px; }
+.card-widget { min-height: 60px; padding: 8px 4px; }
+.card-widget p { margin: 8px 0; }
+.card-widget label { margin-bottom: 8px; display: block; }
+.card-widget input, .card-widget button { margin: 4px; }
+.card-widget canvas { margin: 8px auto; }
+
+/* Radio buttons */
+.radio-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+.radio-btn {
+    padding: 4px 0;
+    font-size: 0.65rem;
+    color: #888;
+    background: #1a1a2a;
+    border: 1px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+}
+.radio-btn:hover { border-color: #666; color: #ccc; }
+.radio-btn.selected { background: #f44; color: #fff; border-color: #f44; }
+
+/* Math */
+.math-problem { font-size: 1.5rem; font-weight: bold; color: #fff; margin: 8px 0; }
+.math-hint { color: #666; font-size: 0.75rem; margin-bottom: 8px; }
+#math-input, .card-widget input[type="number"], .card-widget input[type="text"] {
+    width: 80px; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; font-size: 1.1rem;
+}
+#math-submit { padding: 10px 18px; background: #2a2a4a; border: 1px solid #66f; color: #66f; border-radius: 4px; cursor: pointer; margin-left: 6px; font-size: 0.95rem; }
+
+/* Dice */
+.dice-area { text-align: center; }
+.dice-pair { display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; }
+.dice {
+    font-size: 3rem;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    margin: 8px auto;
+    font-weight: bold;
+}
+.dice.rolling { animation: shake 0.1s infinite; }
+@keyframes shake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-10deg)} 75%{transform:rotate(10deg)} }
+.dice-roll-btn { padding: 12px 28px; background: #2a1a1a; border: 1px solid #f44; color: #f44; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
+#dice-result { color: #888; margin-top: 8px; font-size: 0.85rem; }
+
+/* Tapping */
+.tap-area { text-align: center; }
+.tap-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 4px;
+}
+.tap-up { background: #2a4a2a; color: #4f4; }
+.tap-down { background: #4a2a2a; color: #f44; }
+.tap-btn:active { transform: scale(0.95); }
+
+/* Canvas controls */
+.color-canvas, .proj-canvas, .snake-canvas, .pong-canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: crosshair;
+    max-width: 100%;
+}
+
+/* Tilt */
+.tilt-area { text-align: center; }
+.tilt-device {
+    width: 80px;
+    height: 120px;
+    background: #333;
+    border-radius: 10px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: transform 0.1s;
+    border: 2px solid #555;
+}
+.tilt-screen { color: #4f4; font-size: 0.7rem; font-weight: bold; }
+
+/* Type backwards */
+.type-area { text-align: center; }
+.back-input { width: 80px; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; font-size: 1.1rem; text-align: center; }
+.back-submit { padding: 10px 18px; background: #2a2a4a; border: 1px solid #66f; color: #66f; border-radius: 4px; cursor: pointer; margin-left: 6px; font-size: 0.95rem; }
+
+/* Captcha */
+.captcha-area { text-align: center; }
+.captcha-q { font-size: 1.3rem; font-weight: bold; color: #ff0; margin: 8px 0; }
+.captcha-input { width: 60px; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; font-size: 1.1rem; }
+.captcha-submit { padding: 10px 18px; background: #2a4a2a; border: 1px solid #4f4; color: #4f4; border-radius: 4px; cursor: pointer; margin-left: 6px; font-size: 0.95rem; }
+
+/* Waiting room */
+.wait-area { text-align: center; font-family: 'Courier New', monospace; }
+.wait-area p { margin: 6px 0; }
+.wait-hint { color: #f44; font-size: 0.8rem; animation: blink 1.5s infinite; }
+@keyframes blink { 50% { opacity: 0.3; } }
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    font-size: 0.8rem;
+}
+footer a { color: #888; }
+
+@media (max-width: 500px) {
+    #gallery { grid-template-columns: 1fr; padding: 1rem; }
+    header h1 { font-size: 1.5rem; }
+}

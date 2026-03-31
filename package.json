@@ -1,0 +1,10 @@
+{
+  "name": "volume-horror",
+  "version": "1.0.0",
+  "description": "Volume Horror UX — a gallery of the world's worst volume control interfaces",
+  "author": "Bill Heyman <bill@heyman.ai>",
+  "license": "MIT",
+  "homepage": "https://zebiv.com/volume-horror/",
+  "repository": { "type": "git", "url": "https://github.com/zebiv-code/volume_horror" },
+  "scripts": { "start": "npx serve web -l 3000" }
+}
